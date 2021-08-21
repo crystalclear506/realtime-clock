@@ -1,0 +1,12 @@
+.clock-container {
+    max-width: 200px;
+    font-family: 'Helvetica';
+    padding: 10px;
+}
+.date-container {
+    text-align: center;
+}
+.time-container {
+    font-size: 30px;
+    text-align: center;
+}
