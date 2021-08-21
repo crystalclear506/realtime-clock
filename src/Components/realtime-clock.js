@@ -1,49 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { getDayById, getMonthById } from '../utils';
 
 import './realtime-clock.css';
 
-const RealtimeClock = () => {
-    const [date, setDate] = useState(new Date());
-    const [hour, setHour] = useState('00');
-    const [minute, setMinute] = useState('00');
-    const [second, setSecond] = useState('00');
+class RealtimeClock extends React.Component{
+    constructor(props) {
+        super(props);
 
-    const [day, setDay] = useState('');
-    const [month, setMonth] = useState('');
-    const [dateNo, setDateNo] = useState('');
-    const [year, setYear] = useState('');
+        this.state = {
+            date: null,
+            hour: null,
+            minute: null,
+            second: null,
+            day: null,
+            month: null,
+            dateNo: null,
+            year: null,
+        }
+    }
 
+    componentDidMount() {
+        this.interval = setInterval(() => {
+            const date = new Date();
+            this.setState({
+                hour: date.getHours().toString().padStart(2, '0'),
+                minute: date.getMinutes().toString().padStart(2, '0'),
+                second: date.getSeconds().toString().padStart(2, '0'),
+                day: getDayById(date.getDay()),
+                year: date.getFullYear(),
+                month:  getMonthById(date.getMonth()),
+                date: date.getDate(),
+            });
+        }, 1000);
+    }
 
-    let interval;
-    useEffect(() => {
-       interval = setInterval(() => {
-            setDate(new Date());
-       }, 1000);
-    }, []);
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
-    useEffect(() => {
-        setHour(date.getHours().toString().padStart(2, '0'));
-        setMinute(date.getMinutes().toString().padStart(2, '0'));
-        setSecond(date.getSeconds().toString().padStart(2, '0'));      
-        
-        const day  = getDayById(date.getDay());
-        setDay(day);
-
-        const month = getMonthById(date.getMonth());
-        setMonth(month);
-
-        setDateNo(date.getDate());
-        setYear(date.getFullYear());
-
-    }, [date]);
-
-    return (
-    <div className="clock-container"> 
-        <div className="time-container">{ hour } : { minute } : { second } </div>
-        <div className="date-container"> { day }, { month } { dateNo}, { year }</div>
-    </div>
-    )
+    render() {
+        return (
+            <div className="clock-container"> 
+                <div className="time-container">{ this.state.hour } : { this.state.minute } : { this.state.second } </div>
+                <div className="date-container"> { this.state.day }, { this.state.month } { this.state.date}, { this.state.year }</div>
+            </div>
+        )
+    }
 }
 
 export default RealtimeClock;
