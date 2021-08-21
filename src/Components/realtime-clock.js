@@ -1,7 +1,7 @@
 import React from 'react';
 import { getDayById, getMonthById } from '../utils';
 
-import './realtime-clock.css';
+import styles from './realtime-clock.css';
 
 class RealtimeClock extends React.Component{
     constructor(props) {
@@ -40,9 +40,9 @@ class RealtimeClock extends React.Component{
 
     render() {
         return (
-            <div className="clock-container"> 
-                <div className="time-container">{ this.state.hour } : { this.state.minute } : { this.state.second } </div>
-                <div className="date-container"> { this.state.day }, { this.state.month } { this.state.date}, { this.state.year }</div>
+            <div className={styles["clock-container"]}> 
+                <div className={styles["time-container"]}>{ this.state.hour } : { this.state.minute } : { this.state.second } </div>
+                <div className={styles["date-container"]}> { this.state.day }, { this.state.month } { this.state.date}, { this.state.year }</div>
             </div>
         )
     }
