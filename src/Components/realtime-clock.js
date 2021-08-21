@@ -21,17 +21,22 @@ class RealtimeClock extends React.Component{
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            const date = new Date();
-            this.setState({
-                hour: date.getHours().toString().padStart(2, '0'),
-                minute: date.getMinutes().toString().padStart(2, '0'),
-                second: date.getSeconds().toString().padStart(2, '0'),
-                day: getDayById(date.getDay()),
-                year: date.getFullYear(),
-                month:  getMonthById(date.getMonth()),
-                date: date.getDate(),
-            });
+            this.updateClock();
         }, 1000);
+        this.updateClock();
+    }
+
+    updateClock() {
+        const date = new Date();
+        this.setState({
+            hour: date.getHours().toString().padStart(2, '0'),
+            minute: date.getMinutes().toString().padStart(2, '0'),
+            second: date.getSeconds().toString().padStart(2, '0'),
+            day: getDayById(date.getDay()),
+            year: date.getFullYear(),
+            month:  getMonthById(date.getMonth()),
+            date: date.getDate(),
+        });
     }
 
     componentWillUnmount() {
