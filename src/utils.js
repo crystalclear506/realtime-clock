@@ -1,5 +1,5 @@
 export const getDayById = (id) => {
-    const weekday = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+    const weekday = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     return weekday[id];
 };
 export const getMonthById = (id) => {
