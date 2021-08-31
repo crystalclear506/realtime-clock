@@ -1,0 +1,13 @@
+.clock-container {
+    font-family: 'Helvetica';
+    padding: 10px;
+    display: inline-block;
+    
+    .date-container {
+        text-align: center;
+    }
+    .time-container {
+        font-size: 2em;
+        text-align: center;
+    }
+}

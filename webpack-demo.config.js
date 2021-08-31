@@ -21,7 +21,7 @@ module.exports = {
                 }
             },
             {
-                "test": /\.css$/i,
+                "test": /\.s[ac]ss$/i,
                 "use": [
                     "style-loader",
                     { 
@@ -30,7 +30,8 @@ module.exports = {
                             importLoaders: 1,
                             modules: true
                         }
-                    }
+                    },
+                    "sass-loader"
                 ]
             }
         ]

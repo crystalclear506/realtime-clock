@@ -1,7 +1,7 @@
 import React from 'react';
 import { getDayById, getMonthById } from '../utils';
 
-import styles from './realtime-clock.css';
+import styles from './realtime-clock.scss';
 
 class RealtimeClock extends React.Component{
     constructor(props) {
